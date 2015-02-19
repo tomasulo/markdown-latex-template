@@ -1,6 +1,8 @@
 # markdown-latex-template
 A template to write your thesis in Markdown and LaTeX
 
+[Markdown Cheatsheet:](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
 ## Table of Contents
 
 * [Installation](#installation)
