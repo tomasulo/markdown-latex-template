@@ -1,0 +1,247 @@
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+% Template based on https://github.com/jgm/pandoc-templates/blob/master/default.latex
+
+$if(fontfamily)$
+  \usepackage{$fontfamily$}
+$else$
+  \usepackage{lmodern}
+$endif$
+
+$if(spacing)$
+  \usepackage[$spacing$]{setspace}
+$endif$
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+% Code Listings
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+% Tables
+\usepackage{longtable,booktabs}
+
+\usepackage{graphicx}
+% Redefine \includegraphics so that, unless explicit options are
+% given, the image width will not exceed the width or the height of the page.
+% Images get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\ScaleWidthIfNeeded{%
+ \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\def\ScaleHeightIfNeeded{%
+  \ifdim\Gin@nat@height>0.9\textheight
+    0.9\textheight
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\setkeys{Gin}{width=\ScaleWidthIfNeeded,height=\ScaleHeightIfNeeded,keepaspectratio}%
+
+% Margins of chapter heading
+$if(chapterheadstartvskip)$
+  \renewcommand*{\chapterheadstartvskip}{\vspace*{$chapterheadstartvskip$}}
+$endif$
+$if(chapterheadendvskip)$
+  \renewcommand*{\chapterheadendvskip}{\vspace{$chapterheadendvskip$}}
+$endif$
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Package to set page headers and footers
+$if(scrlayer-scrpage)$
+  \usepackage[automark,headsepline]{scrlayer-scrpage}
+  $for(scrlayer-scrpage)$
+    $scrlayer-scrpage$
+  $endfor$
+$endif$
+
+$if(euro)$
+  \usepackage{eurosym}
+$endif$
+
+$if(mainfont)$
+  \setmainfont{$mainfont$}
+$endif$
+
+$if(sansfont)$
+  \setsansfont{$sansfont$}
+$endif$
+
+$if(monofont)$
+  \setmonofont[Mapping=tex-ansi]{$monofont$}
+$endif$
+
+$if(mathfont)$
+  \setmathfont(Digits,Latin,Greek){$mathfont$}
+$endif$
+
+$if(geometry)$
+  \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+
+$if(natbib)$
+  \usepackage{natbib}
+  \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+
+$if(biblatex)$
+  \usepackage[backend=biber,style=$if(biblio-style)$$biblio-style$$else$alphabetic$endif$]{biblatex}
+  $if(biblio-files)$
+    \addbibresource{$biblio-files$}
+  $endif$
+$endif$
+
+$if(highlighting-macros)$
+  $highlighting-macros$
+$endif$
+
+$if(verbatim-in-note)$
+  \usepackage{fancyvrb}
+  \VerbatimFootnotes
+$endif$
+
+
+\usepackage[unicode=true]{hyperref}
+
+\hypersetup{breaklinks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            pdfborder={0 0 0}}
+
+\urlstyle{same}  % don't use monospace font for urls
+
+$if(links-as-notes)$
+  % Make links footnotes instead of hotlinks:
+  \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+
+$if(strikeout)$
+  \usepackage[normalem]{ulem}
+  % avoid problems with \sout in headers with hyperref:
+  \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+$if(numbersections)$
+  \setcounter{secnumdepth}{5}
+$else$
+  \setcounter{secnumdepth}{0}
+$endif$
+
+$if(verbatim-in-note)$
+  \VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+
+$for(header-includes)$
+  $header-includes$
+$endfor$
+
+\begin{document}
+
+\frontmatter
+
+$for(include-before)$
+  \input{$include-before$}
+$endfor$
+
+\clearpage
+
+$if(toc)$
+  \hypersetup{linkcolor=black}
+  \setcounter{tocdepth}{$toc-depth$}
+  \newgeometry{left=3cm,right=2.5cm, top=1.5cm, bottom=3cm}
+    \tableofcontents
+    \pagestyle{plain}
+    \cleardoublepage
+$endif$
+
+$if(lot)$
+  \newgeometry{left=3cm,right=2.5cm, top=1.5cm, bottom=3cm}
+    \listoftables
+  \restoregeometry
+  \clearpage
+$endif$
+
+$if(lof)$
+  \newgeometry{left=3cm,right=2.5cm, top=1.5cm, bottom=3cm}
+    \listoffigures
+  \restoregeometry
+  \clearpage
+$endif$
+
+$if(scrlayer-scrpage)$
+  $for(scrlayer-scrpage)$
+    $scrlayer-scrpage$
+  $endfor$
+$endif$
+
+\mainmatter
+
+$body$
+
+$for(include-chapters)$
+  \input($include-chapters$)
+$endfor$
+
+$if(biblatex)$
+  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+\backmatter
+
+$for(include-after)$
+  \input{$include-after$}
+$endfor$
+
+\end{document}
