@@ -8,3 +8,5 @@
 *.out
 *.run.xml
 *.toc
+*.sublime-project
+*.sublime-workspace
