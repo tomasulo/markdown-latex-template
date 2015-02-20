@@ -85,6 +85,7 @@ $\begin{aligned}
 
 This is the folder structure:
 
+```
 ├── build.sh
 ├── content
 │   ├── 01.md
@@ -103,6 +104,7 @@ This is the folder structure:
 ├── metadata.md
 ├── README.md
 ├── template.tex
+```
 
 ### Content
 
