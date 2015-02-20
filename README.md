@@ -46,7 +46,7 @@ And the following:
 
 ## Build
 
-To build and compile the pdf, run
+To create the pdf, run
 ```./build.sh nameofpdf```
 
 ## Commands
