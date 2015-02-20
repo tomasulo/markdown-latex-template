@@ -1,6 +1,13 @@
 # markdown-latex-template
 
-With this template you can write your thesis in [Markdown](http://daringfireball.net/projects/markdown/), while still using all the awesome [LaTeX](http://www.latex-project.org/) features.
+With this template you can write your thesis in [Markdown](http://daringfireball.net/projects/markdown/), while still using all the awesome [LaTeX](http://www.latex-project.org/) features, including
+
+- Table of Contents
+- Figures
+- Listings
+- Bibliography
+
+etc.
 
 Content written in Markdown is converted to LaTeX using [pandoc](http://johnmacfarlane.net/pandoc/) and then converted to pdf with pdflatex.
 
