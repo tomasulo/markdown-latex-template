@@ -167,6 +167,6 @@ $endfor$
 
 - `template.tex`
 
-This is the most important file. pandoc uses the template to convert the markdown content into LaTeX.
+This is the most important file. pandoc uses the `template.tex` to convert markdown into LaTeX. It is referenced in `build.sh`.
 
 
