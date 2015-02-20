@@ -1,37 +1,172 @@
 # markdown-latex-template
-A template to write your thesis in Markdown and LaTeX
 
-[Markdown Cheatsheet:](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+With this template you can write your thesis in Markdown, while still using all the awesome LaTeX features.
+
+Content written in Markdown is converted to LaTeX using pandoc and then converted to pdf with pdflatex.
+
+[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Usage](#usage)
+* [Prerequisites](#prerequisites)
+* [Build](#build)
 * [Commands](#commands)
-  * [Headings](#headings)
-  * [Enumerations](#enumerations)
-  * [Links](#links)
-  * [Images](#images)
-  * [Tables](#tables)
-  * [Code Snippets](#code-snippets)
-  * [Math](#math)
+    * [Referencing Chapters](#referencing-chapters)
+    * [Images](#images)
+    * [Sources](#sources)
+    * [Math](#math)
+* [Structure](#structure)
+    - [Content](#content)
+    - [Images](#images)
+    - [Include](#include)
+    - [Important Files](#important-files)
 
-## Installation
+## Prerequisites
 
-## Usage
+You need to install these packages to work with the template:
+
+[TeX Live](https://www.tug.org/texlive/):
+```sudo apt-get install texlive```
+
+[biber](http://biblatex-biber.sourceforge.net/):
+```sudo apt-get install biber```
+
+And the following:
+```sudo apt-get install lmodern texlive-bibtex-extra texlive-latex-extra```
+
+## Build
+
+To build and compile the pdf, run
+```./build.sh nameofpdf```
 
 ## Commands
 
-### Headings
+The syntax is plain Markdown. You can find a great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). 
 
-### Enumerations
+The following commands are common in writing a thesis. Check out `01.md` for more.
 
-### Links
+### Referencing Chapters
+
+To reference certain chapters you need to annotate the heading:
+
+```
+# Chapter 1 {#chapter-one}
+```
+
+You can then reference it in your text with 
+
+`...as previously discussed in [Chapter 1](#chapter-one)...`
 
 ### Images
 
-### Tables
+Add an image to `/images`. You can then add it to your document with
 
-### Code Snippets
+`![Caption of your image \label{your-label}](images/your-image.png)`
+
+and reference it with `\ref{your-label}`.
+
+### Sources
+
+Simply reference your sources by writing `[@dune1990]`.
 
 ### Math
+
+You can add Math to your document in LaTeX syntax. But you need to annotate it with `$` to signal math-mode.
+
+For example math:
+
+```
+$\begin{aligned}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x – y – xz \\
+\dot{z} & = -\beta z + xy
+\end{aligned}$
+```
+
+## Structure
+
+This is the folder structure:
+
+├── build.sh
+├── content
+│   ├── 01.md
+│   └── 02.md
+├── images
+│   ├── cat.jpg
+│   └── monster.jpg
+├── include
+│   ├── abstract.tex
+│   ├── acknowledgements.tex
+│   ├── APPENDIX.tex
+│   ├── eigenstaendigkeitserklaerung.tex
+│   └── titlepage.tex
+├── library.bib
+├── LICENSE
+├── metadata.md
+├── README.md
+├── template.tex
+
+### Content
+
+This is where you put your content written in Markdown. You don't need to include these files anywhere because they are added automatically by pandoc.
+
+### Images
+
+Self-explanatory. Images go here.
+
+### Include
+
+Sometimes it is still necessary to create custom tex-files like the abstract or the titlepage. This is the place to put them.
+
+You need to include those in `metadata.md` either as include-before or include-after.
+
+For example:
+```
+include-before:
+    - include/titlepage.tex
+    - include/eigenstaendigkeitserklaerung.tex
+    - include/abstract.tex
+    - include/acknowledgements.tex
+include-after:
+    - include/APPENDIX.tex
+```
+
+### Important Files
+
+- `build.sh`
+
+This is the build-script you need to run if you want to build your pdf. It takes one argument which is the desired name of the pdf.
+
+For example:
+```
+./build.sh mythesis
+```
+
+- `library.bib`
+
+This is your bibliography and contains all your sources. It is referenced in `metadata.md`. You can also specify multiple bib-files.
+
+```
+biblio-files: 
+    - library1.bib
+    - library2.bib
+    - ...
+```
+
+- `metadata.md`
+
+You can specify settings and metadata in here. These can then be accessed in `template.tex`.
+
+For example:
+
+```
+$for(header-includes)$
+  $header-includes$
+$endfor$
+```
+
+- `template.tex`
+
+This is the most important file. pandoc uses the template to convert the markdown content into LaTeX.
+
+
