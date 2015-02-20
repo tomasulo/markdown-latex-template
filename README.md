@@ -49,9 +49,7 @@ The following commands are common in writing a thesis. Check out `01.md` for mor
 
 To reference certain chapters you need to annotate the heading:
 
-```
-# Chapter 1 {#chapter-one}
-```
+`# Chapter 1 {#chapter-one}`
 
 You can then reference it in your text with 
 
