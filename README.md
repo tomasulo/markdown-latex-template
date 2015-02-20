@@ -1,8 +1,8 @@
 # markdown-latex-template
 
-With this template you can write your thesis in Markdown, while still using all the awesome LaTeX features.
+With this template you can write your thesis in [Markdown](http://daringfireball.net/projects/markdown/), while still using all the awesome [LaTeX](http://www.latex-project.org/) features.
 
-Content written in Markdown is converted to LaTeX using pandoc and then converted to pdf with pdflatex.
+Content written in Markdown is converted to LaTeX using [pandoc](http://johnmacfarlane.net/pandoc/) and then converted to pdf with pdflatex.
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
@@ -26,13 +26,16 @@ Content written in Markdown is converted to LaTeX using pandoc and then converte
 You need to install these packages to work with the template:
 
 [TeX Live](https://www.tug.org/texlive/):
-```sudo apt-get install texlive```
+`sudo apt-get install texlive`
 
 [biber](http://biblatex-biber.sourceforge.net/):
-```sudo apt-get install biber```
+`sudo apt-get install biber`
+
+[pandoc](http://johnmacfarlane.net/pandoc/):
+`sudo apt-get install pandoc`
 
 And the following:
-```sudo apt-get install lmodern texlive-bibtex-extra texlive-latex-extra```
+`sudo apt-get install lmodern texlive-bibtex-extra texlive-latex-extra`
 
 ## Build
 
@@ -43,7 +46,7 @@ To build and compile the pdf, run
 
 The syntax is plain Markdown. You can find a great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). 
 
-The following commands are common in writing a thesis. Check out `01.md` for more.
+The following commands are common in writing a thesis or specific for pandoc. Check out `01.md` for more.
 
 ### Referencing Chapters
 
